@@ -13,7 +13,17 @@ class ParkingLotTest {
         //when
         ParkingTicket parkingTicket = parkingLot.park(car);
         //then
-        assertEquals(car.getParkingTicket(), parkingTicket);
+        assertEquals(parkingLot.getParkingTicketOfCar(car) ,parkingTicket);
+    }
+
+    @Test
+    void should_return_car_when_fetch_the_car_given_parking_lot_and_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingTicket parkingTicket = new ParkingTicket();
+        //when
+        parkingLot.fetch(parkingTicket);
+        //then
     }
 
 }
