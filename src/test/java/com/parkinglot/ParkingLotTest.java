@@ -2,6 +2,9 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotTest {
@@ -66,5 +69,19 @@ class ParkingLotTest {
         Car noCar = parkingLot.fetch(parkingTicket);
         //then
         assertNull(noCar);
+    }
+
+    @Test
+    void should_return_nothing_when_parking_given_parking_lot_with_full_capacity_10() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        List<ParkingTicket> parkingTickets = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            parkingTickets.add(parkingLot.park(new Car()));
+        }
+        //when
+        ParkingTicket noTicket = parkingLot.park(new Car());
+        //then
+        assertNull(noTicket);
     }
 }
