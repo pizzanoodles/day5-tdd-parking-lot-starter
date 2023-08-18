@@ -1,5 +1,6 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.UnrecognizedTicketException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -53,9 +54,10 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot();
         ParkingTicket invalidTicket = new ParkingTicket();
         //when
-        Car noCar = parkingLot.fetch(invalidTicket);
         //then
-        assertNull(noCar);
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingLot.fetch(invalidTicket);
+        });
     }
 
     @Test
