@@ -23,13 +23,14 @@ class ParkingLotTest {
     }
 
     @Test
-    void should_return_car_when_fetch_the_car_given_parking_lot_and_ticket() {
+    void should_return_car_when_fetch_the_car_given_parking_lot_and_ticket_and_standard_parking_boy() {
         //given
         ParkingLot parkingLot = new ParkingLot();
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLot);
         Car carToPark = new Car();
-        ParkingTicket parkingTicket = parkingLot.park(carToPark);
+        ParkingTicket parkingTicket = parkingBoy.park(carToPark);
         //when
-        Car parkedCar = parkingLot.fetch(parkingTicket);
+        Car parkedCar = parkingBoy.fetch(parkingTicket);
         //then
         assertEquals(carToPark, parkedCar);
     }
