@@ -19,11 +19,4 @@ public class StandardParkingBoy extends ParkingBoy {
                 .orElseThrow(FullParkingLotException::new)
                 .park(car);
     }
-
-    public Car fetch(ParkingTicket parkingTicket) {
-        return parkingLots.stream()
-                .map(parkingLot -> parkingLot.fetch(parkingTicket))
-                .findFirst()
-                .orElseThrow(UnrecognizedTicketException::new);
-    }
 }

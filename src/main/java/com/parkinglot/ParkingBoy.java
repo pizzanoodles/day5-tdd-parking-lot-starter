@@ -1,5 +1,7 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.UnrecognizedTicketException;
+
 import java.util.List;
 
 public abstract class ParkingBoy {
@@ -12,6 +14,9 @@ public abstract class ParkingBoy {
         return new ParkingTicket();
     }
     public Car fetch(ParkingTicket parkingTicket) {
-        return new Car();
+        return parkingLots.stream()
+                .map(parkingLot -> parkingLot.fetch(parkingTicket))
+                .findFirst()
+                .orElseThrow(UnrecognizedTicketException::new);
     }
 }
