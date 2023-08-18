@@ -33,7 +33,6 @@ class StandardParkingBoyTest {
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
         StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
-        List<ParkingTicket> parkingTicketsforLot1 = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             parkingBoy.park(new Car());
         }
