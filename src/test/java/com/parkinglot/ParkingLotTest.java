@@ -11,12 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotTest {
     @Test
-    void should_return_parking_ticket_when_park_the_car_given_parking_lot_and_car() {
+    void should_return_parking_ticket_when_park_the_car_given_parking_lot_and_car_and_standard_parking_boy() {
         //given
         ParkingLot parkingLot = new ParkingLot();
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLot);
         Car car = new Car();
         //when
-        ParkingTicket parkingTicket = parkingLot.park(car);
+        ParkingTicket parkingTicket = parkingBoy.park(car);
         //then
         assertEquals(parkingLot.getParkingTicketOfCar(car), parkingTicket);
     }
