@@ -37,7 +37,12 @@ public class ParkingLot {
     public boolean hasAvailableCapacity() {
         return ((capacity - ticketCarMap.size()) != 0);
     }
+
     public boolean hasParkedCars() {
         return !ticketCarMap.isEmpty();
+    }
+
+    public double getAvailablePositionRate() {
+        return ((double) getAvailableCapacity() / (double) capacity);
     }
 }
