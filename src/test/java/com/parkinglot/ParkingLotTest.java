@@ -83,16 +83,17 @@ class ParkingLotTest {
     }
 
     @Test
-    void should_return_nothing_when_parking_given_parking_lot_with_full_capacity_10() {
+    void should_return_nothing_when_parking_given_parking_lot_with_full_capacity_10_and_standard_parking_boy() {
         //given
         ParkingLot parkingLot = new ParkingLot();
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLot);
         List<ParkingTicket> parkingTickets = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            parkingTickets.add(parkingLot.park(new Car()));
+            parkingTickets.add(parkingBoy.park(new Car()));
         }
         //when
         FullParkingLotException fullParkingLotException = assertThrows(FullParkingLotException.class, () -> {
-            parkingLot.park(new Car());
+            parkingBoy.park(new Car());
         });
         //then
         assertEquals("No available position.", fullParkingLotException.getMessage());
