@@ -51,18 +51,18 @@ class StandardParkingBoyTest {
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
         ParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
-        Car carInFirstLot = new Car();
-        Car carInSecondLot = new Car();
-        ParkingTicket parkingTicketFirstCar = parkingBoy.park(carInFirstLot);
-        ParkingTicket parkingTicketSecondCar = parkingBoy.park(carInSecondLot);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        ParkingTicket parkingTicketFirstCar = parkingBoy.park(firstCar);
+        ParkingTicket parkingTicketSecondCar = parkingBoy.park(secondCar);
         //when
         Car fetchedFirstCar = parkingBoy.fetch(parkingTicketFirstCar);
         Car fetchedSecondCar = parkingBoy.fetch(parkingTicketSecondCar);
         //then
         assertNotNull(parkingTicketFirstCar);
         assertNotNull(parkingTicketSecondCar);
-        assertEquals(carInFirstLot, fetchedFirstCar);
-        assertEquals(carInSecondLot, fetchedSecondCar);
+        assertEquals(firstCar, fetchedFirstCar);
+        assertEquals(secondCar, fetchedSecondCar);
     }
 
     @Test
