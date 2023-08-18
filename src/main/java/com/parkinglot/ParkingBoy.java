@@ -2,7 +2,6 @@ package com.parkinglot;
 
 import com.parkinglot.exception.UnrecognizedTicketException;
 
-import java.util.Comparator;
 import java.util.List;
 
 public abstract class ParkingBoy {
