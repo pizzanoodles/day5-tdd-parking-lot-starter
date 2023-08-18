@@ -55,4 +55,16 @@ class ParkingLotTest {
         assertNull(noCar);
     }
 
+    @Test
+    void should_return_nothing_when_fetch_using_a_used_parking_ticket_given_parking_lot_and_parking_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingLot.park(car);
+        //when
+        Car parkedCar = parkingLot.fetch(parkingTicket);
+        Car noCar = parkingLot.fetch(parkingTicket);
+        //then
+        assertNull(noCar);
+    }
 }
