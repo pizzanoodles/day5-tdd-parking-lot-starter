@@ -1,16 +1,28 @@
 package com.parkinglot;
 
-public class StandardParkingBoy {
-    private ParkingLot parkingLot;
+import com.parkinglot.exception.FullParkingLotException;
+import com.parkinglot.exception.UnrecognizedTicketException;
 
-    public StandardParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+import java.util.List;
+
+public class StandardParkingBoy {
+    private List<ParkingLot> parkingLots;
+
+    public StandardParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 
     public ParkingTicket park(Car car) {
-        return this.parkingLot.park(car);
+        return parkingLots.stream()
+                .filter(ParkingLot::hasAvailableCapacity)
+                .findFirst()
+                .orElseThrow(FullParkingLotException::new)
+                .park(car);
     }
     public Car fetch(ParkingTicket parkingTicket) {
-        return this.parkingLot.fetch(parkingTicket);
+        return parkingLots.stream()
+                .map(parkingLot -> parkingLot.fetch(parkingTicket))
+                .findFirst()
+                .orElseThrow(UnrecognizedTicketException::new);
     }
 }
