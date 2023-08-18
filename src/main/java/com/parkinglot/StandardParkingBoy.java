@@ -1,7 +1,6 @@
 package com.parkinglot;
 
 import com.parkinglot.exception.FullParkingLotException;
-import com.parkinglot.exception.UnrecognizedTicketException;
 
 import java.util.List;
 
