@@ -11,13 +11,16 @@ public abstract class ParkingBoy {
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
+
     public ParkingTicket park(Car car) {
         return new ParkingTicket();
     }
+
     public Car fetch(ParkingTicket parkingTicket) {
         return parkingLots.stream()
-                .min(Comparator.comparing(ParkingLot::getAvailableCapacity))
-                .map(parkingLot -> parkingLot.fetch(parkingTicket))
-                .orElseThrow(UnrecognizedTicketException::new);
+                .filter(ParkingLot::hasParkedCars)
+                .findFirst()
+                .orElseThrow(UnrecognizedTicketException::new)
+                .fetch(parkingTicket);
     }
 }
