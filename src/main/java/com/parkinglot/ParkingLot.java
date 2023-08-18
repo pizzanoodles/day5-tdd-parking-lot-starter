@@ -1,5 +1,6 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.FullParkingLotException;
 import com.parkinglot.exception.UnrecognizedTicketException;
 
 import java.util.HashMap;
@@ -11,7 +12,9 @@ public class ParkingLot {
     private Map<ParkingTicket, Car> carTicketMap = new HashMap<>();
 
     public ParkingTicket park(Car car) {
-        if (carTicketMap.size() == 10) return null;
+        if (carTicketMap.size() == 10){
+            throw new FullParkingLotException();
+        }
         ParkingTicket parkingTicket = new ParkingTicket();
         carTicketMap.put(parkingTicket, car);
         return parkingTicket;
