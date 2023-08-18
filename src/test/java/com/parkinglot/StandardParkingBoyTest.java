@@ -45,4 +45,35 @@ class StandardParkingBoyTest {
         assertEquals(0, firstParkingLot.getAvailableCapacity());
         assertEquals(9, secondParkingLot.getAvailableCapacity());
     }
+
+    @Test
+    void should_return_right_car_when_fetch_twice_given_standard_parking_boy_two_parking_lots_both_with_parked_car_and_two_tickets() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        Car carInFirstLot = new Car();
+        Car carInSecondLot = new Car();
+        ParkingTicket parkingTicketFirstCar = parkingBoy.park(carInFirstLot);
+        ParkingTicket parkingTicketSecondCar = parkingBoy.park(carInSecondLot);
+        //when
+        Car fetchedCarFromFirstLot = parkingBoy.fetch(parkingTicketFirstCar);
+        Car fetchedCarFromSecondLot = parkingBoy.fetch(parkingTicketSecondCar);
+        //then
+        assertNotNull(parkingTicketFirstCar);
+        assertNotNull(parkingTicketSecondCar);
+        assertEquals(carInFirstLot, fetchedCarFromFirstLot);
+        assertEquals(carInSecondLot, fetchedCarFromSecondLot);
+    }
+
+    @Test
+    void should_return_UnrecognizedParkingTicket_exception_when_fetch_given_standard_parking_boy_and_invalid_ticket() {
+        //given
+
+
+        //when
+
+        //then
+    }
 }
