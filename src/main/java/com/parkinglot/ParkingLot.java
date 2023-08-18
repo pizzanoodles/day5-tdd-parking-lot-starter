@@ -1,22 +1,28 @@
 package com.parkinglot;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ParkingLot {
-    private Map<Car, ParkingTicket> carsAndTickets = new HashMap<>();
+    private Map<ParkingTicket, Car> carTicketMap = new HashMap<>();
+
     public ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
-        carsAndTickets.put(car, parkingTicket);
+        carTicketMap.put(parkingTicket, car);
         return parkingTicket;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return new Car();
+        return carTicketMap.get(parkingTicket);
     }
 
     public ParkingTicket getParkingTicketOfCar(Car car) {
-        return carsAndTickets.get(car);
+        List<Map.Entry<ParkingTicket, Car>> ticketWithMatchingCar = carTicketMap.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue().equals(car))
+                .collect(Collectors.toList());
+        return ticketWithMatchingCar.get(0).getKey();
     }
 }
