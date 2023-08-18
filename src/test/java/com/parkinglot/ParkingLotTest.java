@@ -20,10 +20,12 @@ class ParkingLotTest {
     void should_return_car_when_fetch_the_car_given_parking_lot_and_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
-        ParkingTicket parkingTicket = new ParkingTicket();
+        Car carToPark = new Car();
+        ParkingTicket parkingTicket = parkingLot.park(carToPark);
         //when
-        parkingLot.fetch(parkingTicket);
+        Car parkedCar = parkingLot.fetch(parkingTicket);
         //then
+        assertEquals(carToPark, parkedCar);
     }
 
 }
