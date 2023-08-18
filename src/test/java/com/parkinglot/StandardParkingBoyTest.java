@@ -104,4 +104,24 @@ class StandardParkingBoyTest {
         assertNotNull(validCar);
         assertEquals("Unrecognized parking ticket.", unrecognizedTicketException.getMessage());
     }
+
+    @Test
+    void should_return_FullParkingLotException_when_park_given_standard_parking_boy_and_two_full_parking_lots() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        for (int i = 0; i < 20; i++) {
+            parkingBoy.park(new Car());
+        }
+        //when
+        FullParkingLotException fullParkingLotException = assertThrows(FullParkingLotException.class, () -> {
+            parkingBoy.park(new Car());
+        });
+        //then
+        assertEquals(0, firstParkingLot.getAvailableCapacity());
+        assertEquals(0, secondParkingLot.getAvailableCapacity());
+        assertEquals("No available position.", fullParkingLotException.getMessage());
+    }
 }
