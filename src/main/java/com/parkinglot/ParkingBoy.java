@@ -2,6 +2,7 @@ package com.parkinglot;
 
 import com.parkinglot.exception.UnrecognizedTicketException;
 
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class ParkingBoy {
@@ -15,8 +16,8 @@ public abstract class ParkingBoy {
     }
     public Car fetch(ParkingTicket parkingTicket) {
         return parkingLots.stream()
+                .min(Comparator.comparing(ParkingLot::getAvailableCapacity))
                 .map(parkingLot -> parkingLot.fetch(parkingTicket))
-                .findFirst()
                 .orElseThrow(UnrecognizedTicketException::new);
     }
 }
