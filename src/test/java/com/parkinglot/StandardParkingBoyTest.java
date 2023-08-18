@@ -15,7 +15,7 @@ class StandardParkingBoyTest {
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
         Car car = new Car();
         //when
         ParkingTicket parkingTicket = parkingBoy.park(car);
@@ -31,7 +31,7 @@ class StandardParkingBoyTest {
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
         for (int i = 0; i < 10; i++) {
             parkingBoy.park(new Car());
         }
@@ -50,7 +50,7 @@ class StandardParkingBoyTest {
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
         Car carInFirstLot = new Car();
         Car carInSecondLot = new Car();
         ParkingTicket parkingTicketFirstCar = parkingBoy.park(carInFirstLot);
@@ -71,7 +71,7 @@ class StandardParkingBoyTest {
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
         Car car = new Car();
         ParkingTicket validParkingTicket = parkingBoy.park(car);
         //when
@@ -90,7 +90,7 @@ class StandardParkingBoyTest {
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
         //when
@@ -109,7 +109,7 @@ class StandardParkingBoyTest {
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
         for (int i = 0; i < 20; i++) {
             parkingBoy.park(new Car());
         }
