@@ -10,14 +10,18 @@ import java.util.stream.Collectors;
 
 public class ParkingLot {
     private Map<ParkingTicket, Car> carTicketMap = new HashMap<>();
+    private static final int capacity = 10;
 
     public ParkingTicket park(Car car) {
-        if (carTicketMap.size() == 10){
+        if (isFull()){
             throw new FullParkingLotException();
         }
         ParkingTicket parkingTicket = new ParkingTicket();
         carTicketMap.put(parkingTicket, car);
         return parkingTicket;
+    }
+    private boolean isFull() {
+        return carTicketMap.size() == capacity;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
