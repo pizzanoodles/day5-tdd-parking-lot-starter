@@ -53,14 +53,15 @@ class ParkingLotTest {
     }
 
     @Test
-    void should_return_nothing_when_fetch_given_parking_lot_and_wrong_or_invalid_ticket() {
+    void should_return_nothing_when_fetch_given_parking_lot_and_wrong_or_invalid_ticket_and_standard_parking_boy() {
         //given
         ParkingLot parkingLot = new ParkingLot();
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLot);
         ParkingTicket invalidTicket = new ParkingTicket();
         //when
         //then
         UnrecognizedTicketException unrecognizedTicketException = assertThrows(UnrecognizedTicketException.class, () -> {
-            parkingLot.fetch(invalidTicket);
+            parkingBoy.fetch(invalidTicket);
         });
         assertEquals("Unrecognized parking ticket.", unrecognizedTicketException.getMessage());
     }
