@@ -118,4 +118,23 @@ class StandardParkingBoyTest {
         assertEquals(0, secondParkingLot.getAvailableCapacity());
         assertEquals("No available position.", fullParkingLotException.getMessage());
     }
+
+    @Test
+    void should_park_car_in_first_lot_when_park_given_two_lots_with_different_capacity_and_standard_parking_boy() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot(5);
+        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
+        ParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        //when
+        ParkingTicket firstParkingTicket = parkingBoy.park(car1);
+        ParkingTicket secondParkingTicket = parkingBoy.park(car2);
+        //then
+        assertNotNull(firstParkingTicket);
+        assertNotNull(secondParkingTicket);
+        assertEquals(8, firstParkingLot.getAvailableCapacity());
+        assertEquals(5, secondParkingLot.getAvailableCapacity());
+    }
 }
