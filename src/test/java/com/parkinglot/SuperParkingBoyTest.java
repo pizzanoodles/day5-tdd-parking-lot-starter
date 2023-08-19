@@ -114,4 +114,23 @@ class SuperParkingBoyTest {
         //then
         assertEquals("No available position.", fullParkingLotException.getMessage());
     }
+
+    @Test
+    void should_park_car_in_second_lot_when_park_given_two_parking_lots_with_different_capacities_and_parked_cars_and_super_parking_boy() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(5);
+        ParkingLot parkingLot2 = new ParkingLot(10);
+        List<ParkingLot> parkingLots = List.of(parkingLot1, parkingLot2);
+        ParkingBoy parkingBoy = new SuperParkingBoy(parkingLots);
+        //when park 3 cars, 1 car should be in lot 1, and 2 should be in lot 2
+        ParkingTicket firstParkingTicket = parkingBoy.park(new Car());
+        ParkingTicket secondParkingTicket = parkingBoy.park(new Car());
+        ParkingTicket thirdParkingTicket = parkingBoy.park(new Car());
+        //then
+        assertNotNull(firstParkingTicket);
+        assertNotNull(secondParkingTicket);
+        assertNotNull(thirdParkingTicket);
+        assertEquals(4, parkingLot1.getAvailableCapacity());
+        assertEquals(8, parkingLot2.getAvailableCapacity());
+    }
 }
