@@ -8,7 +8,14 @@ import java.util.Map;
 
 public class ParkingLot {
     private final Map<ParkingTicket, Car> ticketCarMap = new HashMap<>();
-    private static final int capacity = 10;
+    private int capacity;
+    public ParkingLot() {
+        this.capacity = 10;
+    }
+
+    public ParkingLot(int capacity) {
+        this.capacity = capacity;
+    }
 
     private boolean isFull() {
         return ticketCarMap.size() == capacity;
