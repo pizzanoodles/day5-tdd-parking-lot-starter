@@ -11,9 +11,7 @@ public abstract class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public ParkingTicket park(Car car) {
-        return new ParkingTicket();
-    }
+    public abstract ParkingTicket park(Car car);
 
     public Car fetch(ParkingTicket parkingTicket) {
         return parkingLots.stream()
