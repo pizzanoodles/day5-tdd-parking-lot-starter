@@ -52,4 +52,6 @@ public class ParkingLot {
     public double getAvailablePositionRate() {
         return ((double) getAvailableCapacity() / (double) capacity);
     }
+
+    //TODO: Test cases for parking lot is missing
 }

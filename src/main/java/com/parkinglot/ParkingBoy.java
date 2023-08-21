@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class ParkingBoy {
     protected List<ParkingLot> parkingLots;
-
+    // TODO: can use private
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
